@@ -30,6 +30,7 @@ class HashSortedSet
     "Basic Hash"
   end
 
+  # Insert the key value pair (element, true)
   def insert(element)
   end
 
