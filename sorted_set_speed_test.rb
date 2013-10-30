@@ -55,7 +55,7 @@ class SetTester
   def init(size, reps)
     @reps = reps
     size.times do |x|
-      @set.insert "test #{x}"
+      @set.insert "test #{x}abcdefghijklmnopzz".split('').shuffle.join('')
     end
   end
 
@@ -112,5 +112,5 @@ end
 
 require_relative 'sorted_set'
 
-SortedSetTest.run_tests([BasicArraySet.new, ArraySet.new, HashSet.new])
+SortedSetTest.run_tests([BasicArraySortedSet.new, ArraySortedSet.new, HashSortedSet.new])
 SortedSetTest.print_all
