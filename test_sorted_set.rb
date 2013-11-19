@@ -12,7 +12,8 @@ class BasicSortedSet
     if @ary.include? element
       return false
     else
-      @ary.push element
+      @ary << element
+      return element
     end
   end
 
@@ -47,7 +48,9 @@ class TestSortedSet
     100.times do |x|
       decision = (rand * 100).to_i
       if decision % 2 == 0
-        assert test_set.insert(x) == set.insert(x), "Inserting #{x} failed"
+        a = test_set.insert(x)
+        b = set.insert(x)
+        assert a == b, "Inserting #{x} failed: \nGot: #{a}\nExpected: #{b}"
       end
     end
 
@@ -56,7 +59,9 @@ class TestSortedSet
     100.times do |x|
       decision = (rand * 100).to_i % 2
       if decision
-        assert test_set.insert(x) == set.insert(x), "Inserting #{x} a second time failed"
+        a = test_set.insert(x)
+        b = set.insert(x)
+        assert a == b, "Inserting #{x} a second time failed: \nGot: #{a}\nExpected: #{b}"
       end
     end
     
