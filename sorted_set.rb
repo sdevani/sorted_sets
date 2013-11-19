@@ -95,6 +95,7 @@ end
 
 class BinaryArraySortedSet
   def initialize
+    @array = []
   end
 
   def name
@@ -103,14 +104,27 @@ class BinaryArraySortedSet
 
   # Insert the element and maintain sorted order
   def insert(element)
+    if @array.include? element
+      return false
+    end
+
+    index = @array.index { |x| x > element }
+    if index
+      @array.insert(index, element)
+    else
+      @array << element
+    end
+    element
   end
 
   # Search for the element using binary search
   def include?(element)
+    binary_search(0, @array.size, element)
   end
 
   # Return the original array (it should be sorted)
   def get_sorted_array
+    @array
   end
 
   # A little helper method to help you implement binary search
@@ -124,5 +138,17 @@ class BinaryArraySortedSet
   #       If the element is lower
   #         Do a binary search on the upper half
   def binary_search(from_index, to_index, element)
+    if from_index == to_index
+      return false
+    elsif to_index - from_index <= 1
+      return @array[from_index] == element
+    else
+      midpoint = from_index + (to_index - from_index)/2
+      if @array[midpoint] > element
+        binary_search(from_index, midpoint, element)
+      else
+        binary_search(midpoint, to_index, element)
+      end
+    end
   end
 end
