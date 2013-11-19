@@ -92,4 +92,4 @@ require_relative 'sorted_set.rb'
 TestSortedSet.new(BasicArraySortedSet).test
 TestSortedSet.new(HashSortedSet).test
 TestSortedSet.new(ArraySortedSet).test
-TestSortedSet.new(BinaryArraySortedSet).test
+# TestSortedSet.new(BinaryArraySortedSet).test
